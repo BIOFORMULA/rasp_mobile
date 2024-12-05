@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raspadinha Virtual</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        #raspadinha {
+            width: 400px;
+            height: 200px;
+            position: relative;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* A camada que será "raspada", começando com uma cor ou imagem */
+        #risco {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(128, 128, 128, 0.7); /* Cor de cobertura */
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: url('capaf.png'); /* A imagem que cobre a raspadinha */
+            background-size: cover;
+        }
+
+        /* Aqui é onde o prêmio ou conteúdo será mostrado quando raspado */
+        #premio {
+            width: 100%;
+            height: 100%;
+            background-image: url('premio10f.png'); /* Imagem que aparece quando raspada */
+            background-size: cover;
+            display: none; /* Fica escondida até ser raspada */
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>Raspadinha Virtual</h2>
+        <div id="raspadinha" onclick="riscar()">
+            <div id="risco"></div>
+            <div id="premio"></div>
+        </div>
+        <p style="text-align: center; font-size: 16px; color: #333;">Clique na raspadinha para raspar!</p>
+    </div>
+
+    <script>
+        function riscar() {
+            let risco = document.getElementById('risco');
+            let premio = document.getElementById('premio');
+
+            // Remover a camada de cobertura (raspada)
+            risco.style.background = "transparent"; // A camada fica invisível
+
+            // Mostrar a imagem do prêmio
+            premio.style.display = "block"; // Exibe a imagem do prêmio
+        }
+    </script>
+</body>
+</html>
